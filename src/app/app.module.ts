@@ -5,11 +5,15 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EntryPageComponent } from './entry-page/entry-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EntryPageComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
