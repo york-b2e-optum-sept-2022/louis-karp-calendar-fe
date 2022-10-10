@@ -11,6 +11,8 @@
 </div>
 
 <div>
-<button (click)="loginUser()">Login</button>
+<button (click)="loginUser(username, password)">Login</button>
 <button (click)="registerUser()">Create User</button>
 </div>
+
+<div>{{loginError}}</div>

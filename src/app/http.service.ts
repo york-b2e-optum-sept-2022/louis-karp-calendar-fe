@@ -12,4 +12,8 @@ export class HttpService {
   addUser(newUser: IUsers) {
     return this.HttpClient.post('http://localhost:3000/users', newUser);
   }
+
+  checkProfile(username: string, password: string) {
+    return this.HttpClient.get('http://localhost:3000/users?username=' + username + '&password=' + password);
+  }
 }

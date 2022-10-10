@@ -13,11 +13,24 @@ export class DataService {
 
   $doneRegistering = new Subject<any>();
 
+  $errorLoggingIn = new Subject<any>();
+
   loggedInUser : IUsers = {
     id: "",
     username: "",
     password: ""
-  }
+  };
+
+  checkProfile : IUsers = {
+    id: "",
+    username: "",
+    password: ""
+  };
+
+  private user: any = null;
+
+
+
 
   constructor(private httpService: HttpService) { }
 
@@ -25,15 +38,36 @@ export class DataService {
     this.$register.next("isRegistering");
   }
 
-  loginUser() {
-    this.$login.next("loggingIn");
+  loginUser(username: string, password: string) {
+
+    this.checkProfile = {
+      id: "0",
+      username: username,
+      password: password
+    }
+
+    this.httpService.checkProfile(this.checkProfile.username, this.checkProfile.password).pipe(first()).subscribe({
+      next: (data) => {
+
+        this.user = data;
+
+        if (this.user.length !== 0 && this.checkProfile) {
+          this.checkProfile = this.user[0];
+          this.$login.next(this.checkProfile);
+        } else {
+          this.$errorLoggingIn.next("Your username and/or password is incorrect. Please try again.");
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   createUser(newUser: IUsers) {
 
     this.httpService.addUser(newUser).pipe(first()).subscribe({
       next: (data) => {
-        console.log(data);
       },
       error: (err) => {
         console.error(err);

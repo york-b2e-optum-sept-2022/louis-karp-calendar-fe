@@ -29,6 +29,5 @@ export class AppComponent {
     this.isRegistering = false
     );
 
-
   }
 }

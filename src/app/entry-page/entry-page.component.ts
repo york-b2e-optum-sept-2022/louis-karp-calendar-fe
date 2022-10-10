@@ -9,10 +9,15 @@ import {DataService} from "../data.service";
 export class EntryPageComponent implements OnInit {
 
   username: string = "";
-  password: string = ""
+  password: string = "";
+  loginError: string = "";
 
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+    this.dataService.$errorLoggingIn.subscribe(data =>
+      this.loginError = data
+    );
+  }
 
   ngOnInit(): void {
   }
@@ -21,7 +26,7 @@ export class EntryPageComponent implements OnInit {
     this.dataService.registerUser();
   }
 
-  loginUser() {
-    this.dataService.loginUser();
+  loginUser(username: string, password: string) {
+    this.dataService.loginUser(username, password);
   }
 }
