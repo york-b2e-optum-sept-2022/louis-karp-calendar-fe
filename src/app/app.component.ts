@@ -17,12 +17,18 @@ export class AppComponent {
 
   constructor(private dataService: DataService) {
 
-    this.dataService.$register.subscribe( (data) =>
+    this.dataService.$register.subscribe( data =>
       this.isRegistering = true
-    )
+    );
 
     this.dataService.$login.subscribe( (data) =>
     this.isLoggedIn = true
-    )
+    );
+
+    this.dataService.$doneRegistering.subscribe(data =>
+    this.isRegistering = false
+    );
+
+
   }
 }

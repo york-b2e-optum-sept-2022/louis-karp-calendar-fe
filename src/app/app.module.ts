@@ -7,13 +7,15 @@ import {FormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EntryPageComponent } from './entry-page/entry-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EntryPageComponent,
-    HomePageComponent
+    HomePageComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<h1>Create a User</h1>
+
+<div>
+  <span>Username: </span>
+  <input [(ngModel)]="newUser.username">
+</div>
+
+<div>
+  <span>Password: </span>
+  <input [(ngModel)]="newUser.password">
+</div>
+
+<div>
+  <button (click)="returnLogin()"><-- Back</button>
+  <button (click)="createUser(newUser)">Register</button>
+</div>
