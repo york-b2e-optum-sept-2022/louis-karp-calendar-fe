@@ -1,1 +1,16 @@
-<p>home-page works!</p>
+<div>
+  <span>Hello, {{profile.username}}</span>
+</div>
+
+<div>
+  <span>Menu:</span>
+  <div>
+    <button (click)="createEvent()">Create an event</button>
+    <button>View my events</button>
+    <button>View my invites</button>
+  </div>
+</div>
+
+<app-new-event *ngIf="isCreating"></app-new-event>
+
+

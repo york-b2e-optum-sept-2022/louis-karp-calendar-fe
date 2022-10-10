@@ -29,7 +29,7 @@ export class DataService {
 
   private user: any = null;
 
-
+  $creating = new Subject<any>();
 
 
   constructor(private httpService: HttpService) { }
@@ -52,8 +52,8 @@ export class DataService {
         this.user = data;
 
         if (this.user.length !== 0 && this.checkProfile) {
-          this.checkProfile = this.user[0];
-          this.$login.next(this.checkProfile);
+          this.loggedInUser = this.user[0];
+          this.$login.next(this.loggedInUser);
         } else {
           this.$errorLoggingIn.next("Your username and/or password is incorrect. Please try again.");
         }
@@ -82,4 +82,15 @@ export class DataService {
   returnLogin() {
     this.$doneRegistering.next("return to login");
   }
+
+  getUser() {
+      if (this.loggedInUser === null) {
+        throw new Error('no profile is set')
+      }
+      return this.loggedInUser;
+    }
+
+    createEvent() {
+      this.$creating.next("is Creating");
+    }
 }

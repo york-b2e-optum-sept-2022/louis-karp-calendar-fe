@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EntryPageComponent } from './entry-page/entry-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { NewEventComponent } from './new-event/new-event.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RegistrationComponent } from './registration/registration.component';
     AppComponent,
     EntryPageComponent,
     HomePageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NewEventComponent
   ],
   imports: [
     BrowserModule,
