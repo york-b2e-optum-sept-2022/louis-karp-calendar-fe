@@ -30,6 +30,8 @@ export class DataService {
   private user: any = null;
 
   $creating = new Subject<any>();
+  $viewEvents = new Subject<any>();
+  $viewInvites = new Subject<any>();
 
 
   constructor(private httpService: HttpService) { }
@@ -92,5 +94,13 @@ export class DataService {
 
     createEvent() {
       this.$creating.next("is Creating");
+    }
+
+    viewEvents() {
+    this.$viewEvents.next("viewing events");
+    }
+
+    viewInvites() {
+    this.$viewInvites.next("viewing invites");
     }
 }

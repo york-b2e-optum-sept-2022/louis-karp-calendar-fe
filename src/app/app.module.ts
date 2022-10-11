@@ -9,6 +9,8 @@ import { EntryPageComponent } from './entry-page/entry-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NewEventComponent } from './new-event/new-event.component';
+import { EventViewComponent } from './event-view/event-view.component';
+import { InviteViewComponent } from './invite-view/invite-view.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { NewEventComponent } from './new-event/new-event.component';
     EntryPageComponent,
     HomePageComponent,
     RegistrationComponent,
-    NewEventComponent
+    NewEventComponent,
+    EventViewComponent,
+    InviteViewComponent
   ],
   imports: [
     BrowserModule,

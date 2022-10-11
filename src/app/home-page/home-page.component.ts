@@ -15,20 +15,22 @@ export class HomePageComponent implements OnInit {
     password: ""
   }
 
-  isCreating: boolean = false;
-   eventView: boolean =  false;
-   inviteView: boolean = false;
 
   constructor(private dataService: DataService) {
     this.profile = this.dataService.getUser();
 
-    this.dataService.$creating.subscribe(data =>
-    this.isCreating = true
-    )
   }
 
   createEvent() {
      this.dataService.createEvent();
+  }
+
+  viewEvents() {
+     this.dataService.viewEvents();
+  }
+
+  viewInvites() {
+     this.dataService.viewInvites();
   }
 
   ngOnInit(): void {

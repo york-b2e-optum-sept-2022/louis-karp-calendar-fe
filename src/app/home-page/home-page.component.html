@@ -6,11 +6,10 @@
   <span>Menu:</span>
   <div>
     <button (click)="createEvent()">Create an event</button>
-    <button>View my events</button>
-    <button>View my invites</button>
+    <button (click)="viewEvents()">View my events</button>
+    <button (click)="viewInvites()">View my invites</button>
   </div>
 </div>
 
-<app-new-event *ngIf="isCreating"></app-new-event>
 
 

@@ -1,3 +1,8 @@
 <app-entry-page *ngIf="!isLoggedIn && !isRegistering"></app-entry-page>
 <app-home-page *ngIf="isLoggedIn"></app-home-page>
-<app-registration *ngIf="isRegistering && !isLoggedIn"></app-registration>
+<app-registration *ngIf="isRegistering && !isLoggedIn">
+
+</app-registration>
+  <app-new-event *ngIf="isCreating"></app-new-event>
+  <app-event-view *ngIf="eventView"></app-event-view>
+  <app-invite-view *ngIf="inviteView"></app-invite-view>
