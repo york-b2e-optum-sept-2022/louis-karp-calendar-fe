@@ -29,14 +29,14 @@ export class NewEventComponent implements OnInit {
     this.newEvent.owner= this.dataService.getUser().id;
     this.dataService.getOtherUsersList();
 
-  this.dataService.$otherMembers.subscribe(data => {
-  this.otherUsers = data;
-    console.log(this.otherUsers)
+    this.dataService.$otherMembers.subscribe(data => {
+    this.otherUsers = data;
+    });
   }
 
-  );
-
-  }
+    submitEvent() {
+      console.log(this.newEvent)
+    }
 
   ngOnInit(): void {
 

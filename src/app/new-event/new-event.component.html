@@ -5,27 +5,27 @@
   <div>
 
   <label>Event Name</label>
-  <input type="text">
+  <input type="text" name="eventName" [(ngModel)]="newEvent.eventName">
   </div>
 
   <label>Send Invites</label>
   <div *ngFor="let member of otherUsers">
-    <input  type="checkbox"  id="{{member.id}}">
+    <input  type="checkbox"  name="{{member.id}}" [(ngModel)]="{{member.Checked}}">
     <label for="{{member.id}}">{{member.username}}</label>
   </div>
 
   <div>
 
   <label>Event Date</label>
-  <input type="date" value="valueAsDate">
+  <input type="date" value="valueAsDate" name="eventDate" [(ngModel)]="newEvent.eventDate">
   </div>
 
   <div>
 
     <label>Description of Event</label>
-    <textarea></textarea>
+    <textarea name="eventDescription" [(ngModel)]="newEvent.eventDescription"></textarea>
   </div>
 
 </div>
 
-<button>Submit</button>
+<button (click)="submitEvent()">Submit</button>

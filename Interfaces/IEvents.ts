@@ -4,5 +4,5 @@ export interface IEvents {
   eventName:string,
   eventDate: number,
   eventDescription: string,
-  invites: []
+  invites: string[]
 }
