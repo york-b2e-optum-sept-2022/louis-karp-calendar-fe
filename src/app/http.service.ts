@@ -16,4 +16,8 @@ export class HttpService {
   checkProfile(username: string, password: string) {
     return this.HttpClient.get('http://localhost:3000/users?username=' + username + '&password=' + password);
   }
+
+  getOtherUsers(id: string) {
+    return this.HttpClient.get('http://localhost:3000/users?id_ne=' + id);
+  }
 }

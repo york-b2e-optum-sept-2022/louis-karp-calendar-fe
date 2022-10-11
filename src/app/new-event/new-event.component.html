@@ -1,1 +1,31 @@
-<p>new-event works!</p>
+<h2>Create an Event</h2>
+
+
+<div>
+  <div>
+
+  <label>Event Name</label>
+  <input type="text">
+  </div>
+
+  <label>Send Invites</label>
+  <div *ngFor="let member of otherUsers">
+    <input  type="checkbox"  id="{{member.id}}">
+    <label for="{{member.id}}">{{member.username}}</label>
+  </div>
+
+  <div>
+
+  <label>Event Date</label>
+  <input type="date" value="valueAsDate">
+  </div>
+
+  <div>
+
+    <label>Description of Event</label>
+    <textarea></textarea>
+  </div>
+
+</div>
+
+<button>Submit</button>

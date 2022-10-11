@@ -34,6 +34,11 @@ export class DataService {
   $viewInvites = new Subject<any>();
 
 
+  otherMembers: {} = {};
+  $otherMembers = new Subject<any>();
+
+
+
   constructor(private httpService: HttpService) { }
 
   registerUser() {
@@ -102,5 +107,17 @@ export class DataService {
 
     viewInvites() {
     this.$viewInvites.next("viewing invites");
+    }
+
+    getOtherUsersList() {
+    this.httpService.getOtherUsers(this.loggedInUser.id).pipe(first()).subscribe({
+      next: (data) => {
+        this.otherMembers = data;
+        this.$otherMembers.next(this.otherMembers);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
     }
 }
