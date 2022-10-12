@@ -10,8 +10,7 @@
 
   <label>Send Invites</label>
   <div *ngFor="let member of otherUsers">
-    <input  type="checkbox"  name="{{member.id}}" [(ngModel)]="{{member.Checked}}">
-    <label for="{{member.id}}">{{member.username}}</label>
+    <button (click)="inviteUser(member.id)" id="{{member.id}}">{{member.username}}</button>
   </div>
 
   <div>

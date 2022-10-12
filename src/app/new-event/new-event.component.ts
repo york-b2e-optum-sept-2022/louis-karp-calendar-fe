@@ -34,6 +34,20 @@ export class NewEventComponent implements OnInit {
     });
   }
 
+  inviteUser(userId: string) {
+      let memberButton = document.getElementById(userId);
+    let foundUser = this.newEvent.invites.indexOf(userId);
+
+    if (foundUser == -1 && memberButton) {
+      memberButton.className = 'invited';
+      this.newEvent.invites.push(userId);
+    } else if (foundUser !== -1 && memberButton) {
+      this.newEvent.invites.splice(foundUser, 1);
+      memberButton.className = 'uninvited';
+    }
+  }
+
+
     submitEvent() {
       console.log(this.newEvent)
     }
