@@ -1,5 +1,6 @@
 export interface IUsers {
   id: string,
   username: string,
-  password: string
+  password: string,
+  eventInvites: string[]
 }

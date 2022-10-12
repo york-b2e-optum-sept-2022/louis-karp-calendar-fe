@@ -13,7 +13,8 @@ export class RegistrationComponent implements OnInit {
   newUser: IUsers = {
   id: uuidv4(),
   username:  "",
-  password: ""
+  password: "",
+    eventInvites: []
 }
 
 

@@ -22,8 +22,7 @@ export class NewEventComponent implements OnInit {
 
   otherUsers: IUsers[] = [];
 
-
-  valueAsDate: any = new Date();
+  valueAsDate: string = '0';
 
   constructor(private dataService: DataService) {
     this.newEvent.owner= this.dataService.getUser().id;
@@ -49,7 +48,12 @@ export class NewEventComponent implements OnInit {
 
 
     submitEvent() {
-      console.log(this.newEvent)
+
+    let dateCDTValue = Date.parse(this.valueAsDate) + 61200000;
+    this.newEvent.eventDate = dateCDTValue;
+
+    this.dataService.addEventToUsers(this.newEvent.invites, this.newEvent.id);
+    this.dataService.addToEventList(this.newEvent);
     }
 
   ngOnInit(): void {

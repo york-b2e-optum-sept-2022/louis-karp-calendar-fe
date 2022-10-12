@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {IUsers} from "../../Interfaces/IUsers";
 import {HttpClient} from "@angular/common/http";
+import {IEvents} from "../../Interfaces/IEvents";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,16 @@ export class HttpService {
 
   getOtherUsers(id: string) {
     return this.HttpClient.get('http://localhost:3000/users?id_ne=' + id);
+  }
+
+  addEvent(event: IEvents) {
+    return this.HttpClient.post('http://localhost:3000/events', event)
+  }
+
+  getUser(id: string) {
+    return this.HttpClient.get('http://localhost:3000/users?id=' + id)
+  }
+  updateUser(user: IUsers) {
+    return this.HttpClient.put( 'http://localhost:3000/users/' + user.id, user)
   }
 }

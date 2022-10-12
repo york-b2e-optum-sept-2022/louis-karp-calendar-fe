@@ -12,7 +12,8 @@ export class HomePageComponent implements OnInit {
    profile: IUsers = {
     id: '',
     username: "",
-    password: ""
+    password: "",
+     eventInvites: []
   }
 
 

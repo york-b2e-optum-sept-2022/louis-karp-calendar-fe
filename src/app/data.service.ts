@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpService} from "./http.service";
 import {first, Subject} from "rxjs";
 import {IUsers} from "../../Interfaces/IUsers";
+import {IEvents} from "../../Interfaces/IEvents";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +20,15 @@ export class DataService {
   loggedInUser : IUsers = {
     id: "",
     username: "",
-    password: ""
+    password: "",
+    eventInvites: []
   };
 
   checkProfile : IUsers = {
     id: "",
     username: "",
-    password: ""
+    password: "",
+    eventInvites: []
   };
 
   private user: any = null;
@@ -36,6 +40,11 @@ export class DataService {
 
   otherMembers: {} = {};
   $otherMembers = new Subject<any>();
+
+   tempProfile: any = null;
+
+
+
 
 
 
@@ -50,7 +59,8 @@ export class DataService {
     this.checkProfile = {
       id: "0",
       username: username,
-      password: password
+      password: password,
+      eventInvites: []
     }
 
     this.httpService.checkProfile(this.checkProfile.username, this.checkProfile.password).pipe(first()).subscribe({
@@ -120,4 +130,46 @@ export class DataService {
       }
     });
     }
+
+    addToEventList(event: IEvents) {
+        this.httpService.addEvent(event).pipe(first()).subscribe({
+          next: (data) => {
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        });
+    };
+
+  addEventToUsers(invites: string[], eventId: string) {
+
+    for (let user of invites) {
+    this.httpService.getUser(user).pipe(first()).subscribe({
+      next: (data) => {
+          this.tempProfile = data;
+        this.tempProfile[0].eventInvites.push(eventId);
+        this.updateUser(this.tempProfile[0]);
+
+
+
+
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+    }
+  };
+
+  updateUser(user: IUsers) {
+    this.httpService.updateUser(user).pipe(first()).subscribe({
+      next: (data) => {
+
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
 }

@@ -3,17 +3,37 @@
     {
       "id": "2",
       "username": "2",
-      "password": "2"
+      "password": "2",
+      "eventInvites": []
     },
     {
       "id": "e0e8a787-411b-4c81-9d85-99bfa1d04883",
       "username": "test",
-      "password": "test"
+      "password": "test",
+      "eventInvites": [
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c"
+      ]
     },
     {
       "id": "a56a75b7-d362-40ae-a656-289c2f1a272a",
       "username": "z",
-      "password": "z"
+      "password": "z",
+      "eventInvites": [
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
+      "owner": "2",
+      "eventName": "test",
+      "eventDate": 1664384400000,
+      "eventDescription": "both friends, 9/28",
+      "invites": [
+        "e0e8a787-411b-4c81-9d85-99bfa1d04883",
+        "a56a75b7-d362-40ae-a656-289c2f1a272a"
+      ]
     }
   ]
 }
