@@ -11,20 +11,14 @@
       "username": "test",
       "password": "test",
       "eventInvites": [
-        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
-        "838695a8-e8ea-4b1f-b9e0-09c3b538462c",
-        "2b89b7c9-b038-4696-ba8c-99b5300ff46d"
+        "838695a8-e8ea-4b1f-b9e0-09c3b538462c"
       ]
     },
     {
       "id": "a56a75b7-d362-40ae-a656-289c2f1a272a",
       "username": "z",
       "password": "z",
-      "eventInvites": [
-        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
-        "838695a8-e8ea-4b1f-b9e0-09c3b538462c",
-        "2b89b7c9-b038-4696-ba8c-99b5300ff46d"
-      ]
+      "eventInvites": []
     }
   ],
   "events": [
@@ -32,34 +26,27 @@
       "id": "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
       "owner": "2",
       "eventName": "test",
-      "eventDate": 1664384400000,
+      "eventDate": 946767600000,
       "eventDescription": "both friends, 9/28",
-      "invites": [
-        "e0e8a787-411b-4c81-9d85-99bfa1d04883",
-        "a56a75b7-d362-40ae-a656-289c2f1a272a"
-      ]
+      "invites": []
     },
     {
       "id": "838695a8-e8ea-4b1f-b9e0-09c3b538462c",
       "owner": "2",
       "eventName": "year 2000",
-      "eventDate": 949424400000,
+      "eventDate": 946767600000,
       "eventDescription": "y2k partay",
       "invites": [
-        "e0e8a787-411b-4c81-9d85-99bfa1d04883",
-        "a56a75b7-d362-40ae-a656-289c2f1a272a"
+        "e0e8a787-411b-4c81-9d85-99bfa1d04883"
       ]
     },
     {
       "id": "2b89b7c9-b038-4696-ba8c-99b5300ff46d",
       "owner": "2",
       "eventName": "future event",
-      "eventDate": 1706806800000,
+      "eventDate": 946767600000,
       "eventDescription": "feb 1 2024",
-      "invites": [
-        "e0e8a787-411b-4c81-9d85-99bfa1d04883",
-        "a56a75b7-d362-40ae-a656-289c2f1a272a"
-      ]
+      "invites": []
     },
     {
       "id": "47f6fe72-be43-4de2-854a-bbd5ee9a08ad",

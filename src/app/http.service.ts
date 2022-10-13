@@ -40,4 +40,12 @@ export class HttpService {
   pullEvent(id: string) {
     return this.HttpClient.get('http://localhost:3000/events?id=' +id)
   }
+
+  getAllUsers() {
+    return this.HttpClient.get('http://localhost:3000/users')
+  }
+
+  updateEvent(event: IEvents) {
+    return this.HttpClient.put('http://localhost:3000/events/' + event.id, event)
+  }
 }

@@ -32,9 +32,12 @@ export class EventViewComponent implements OnInit {
   fromTime: string = "0";
   toTime: string ='0';
 
-
-
   state: string = 'base';
+
+  otherUsers: IUsers[] = [];
+
+  valueAsDate: string = '0';
+
 
   constructor(private dataService: DataService) {
 
@@ -48,10 +51,16 @@ export class EventViewComponent implements OnInit {
     this.dataService.$singleEvent.subscribe(data => {
       this.singleEvent = data[0];
     })
+
+    this.dataService.getOtherUsersList();
+
+    this.dataService.$otherMembers.subscribe(data => {
+      this.otherUsers = data;
+    });
   }
 
 
-  filterEvents(fromTime: string, toTime: string) {
+  filterEvents() {
    let  fromUnix = Date.parse(this.fromTime) + 61200000;
     let toUnix = Date.parse(this.toTime) + 61200000;
     this.state = 'filtered';
@@ -79,6 +88,38 @@ export class EventViewComponent implements OnInit {
     this.state= 'base'
   }
 
+  editEvent(){
+    this.state= 'editing';
+
+  }
+
+  findUser(id: string) {
+    let foundUser = this.singleEvent.invites.indexOf(id);
+    return foundUser;
+  }
+
+  editInvite(userId: string) {
+    let memberButton = document.getElementById(userId);
+    let foundUser = this.singleEvent.invites.indexOf(userId);
+
+    if (foundUser == -1 && memberButton) {
+      memberButton.className = 'invited';
+      this.singleEvent.invites.push(userId);
+    } else if (foundUser !== -1 && memberButton) {
+      this.singleEvent.invites.splice(foundUser, 1);
+      memberButton.className = 'uninvited';
+    }
+    console.log(this.singleEvent.invites)
+  }
+
+  submitEventEdit() {
+    let dateCDTValue = Date.parse(this.valueAsDate) + 61200000;
+    this.singleEvent.eventDate = dateCDTValue;
+    console.log(this.singleEvent)
+    this.dataService.updateInvites(this.singleEvent.invites, this.singleEvent.id);
+    this.dataService.updateEvent(this.singleEvent)
+    this.dataService.goHomepage();
+  }
   ngOnInit(): void {
   }
 

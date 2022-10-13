@@ -47,7 +47,7 @@ export class DataService {
    $myEvents = new Subject<any>();
    $singleEvent = new Subject<any>();
 
-
+  allUsers: any =null;
 
 
 
@@ -195,6 +195,42 @@ export class DataService {
     this.httpService.pullEvent(id).pipe(first()).subscribe({
       next: (data) => {
         this.$singleEvent.next(data);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  updateInvites(invites: string[], inviteID: string) {
+    this.deleteInviteFromAll(inviteID);
+    this.addEventToUsers(invites, inviteID);
+  }
+
+  deleteInviteFromAll(inviteID: string) {
+    this.httpService.getAllUsers().pipe(first()).subscribe({
+      next: (data) => {
+        this.allUsers = data;
+        for (let user of this.allUsers) {
+          let foundEvent = user.eventInvites.indexOf(inviteID);
+
+          if (foundEvent !== -1) {
+            user.eventInvites.splice(foundEvent, 1)
+          }
+
+          this.updateUser(user);
+        }
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  updateEvent(event: IEvents) {
+    this.httpService.updateEvent(event).pipe(first()).subscribe({
+      next: (data) => {
+
       },
       error: (err) => {
         console.error(err);
