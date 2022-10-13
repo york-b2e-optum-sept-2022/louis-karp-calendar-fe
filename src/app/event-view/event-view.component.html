@@ -10,7 +10,7 @@
     <label>To:</label>
     <input type="date" [(ngModel)]="toTime">
   </div>
-  <button (click)="filterEvents()">Filter</button>
+  <button (click)="filterEvents(fromTime, toTime)">Filter</button>
   <button>Sort Ascending</button>
   <button>Sort Descending</button>
 </div>
@@ -22,10 +22,32 @@
       <th>Date</th>
       <th>Description</th>
     </tr>
-    <tr *ngFor="let event of events">
+    <tr *ngFor="let event of events" (click)="showEvent(event.id)">
       <td>{{event.eventName}}</td>
       <td>{{getDate(event.eventDate)}}</td>
       <td>{{event.eventDescription}}</td>
     </tr>
   </table>
+</div>
+
+<div *ngIf="this.state == 'filtered'">
+  <table>
+    <tr>
+      <th>Event Name</th>
+      <th>Date</th>
+      <th>Description</th>
+    </tr>
+    <tr *ngFor="let event of eventsCopy" (click)="showEvent(event.id)">
+      <td>{{event.eventName}}</td>
+      <td>{{getDate(event.eventDate)}}</td>
+      <td>{{event.eventDescription}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="this.state == 'viewingEvent'">
+  <h1>{{singleEvent.eventName}}</h1>
+  <h2>{{getDate(singleEvent.eventDate)}}</h2>
+  <p>{{singleEvent.eventDescription}}</p>
+  <button (click)="setBase()">Return to Events</button>
 </div>

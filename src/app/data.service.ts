@@ -45,6 +45,7 @@ export class DataService {
    tempProfile: any = null;
 
    $myEvents = new Subject<any>();
+   $singleEvent = new Subject<any>();
 
 
 
@@ -183,6 +184,17 @@ export class DataService {
     this.httpService.showMyEvents(id).pipe(first()).subscribe({
       next: (data) => {
         this.$myEvents.next(data);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  pullEvent(id: string) {
+    this.httpService.pullEvent(id).pipe(first()).subscribe({
+      next: (data) => {
+        this.$singleEvent.next(data);
       },
       error: (err) => {
         console.error(err);

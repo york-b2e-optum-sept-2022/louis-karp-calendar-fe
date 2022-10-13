@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from "../data.service";
 import {IUsers} from "../../../Interfaces/IUsers";
 import {IEvents} from "../../../Interfaces/IEvents";
+import {from} from "rxjs";
 
 @Component({
   selector: 'app-event-view',
@@ -18,9 +19,20 @@ export class EventViewComponent implements OnInit {
 }
 
   events: IEvents[] =[];
+  eventsCopy: IEvents[] = [];
+  singleEvent: IEvents = {
+    id: '',
+    owner: '',
+    eventName: '',
+    eventDate: 0,
+    eventDescription: '',
+    invites: []
+  };
 
-  fromTime: string = "";
-  toTime: string ='';
+  fromTime: string = "0";
+  toTime: string ='0';
+
+
 
   state: string = 'base';
 
@@ -31,27 +43,41 @@ export class EventViewComponent implements OnInit {
 
      this.dataService.$myEvents.subscribe(data => {
       this.events = data;
-      // this.convertDate();
+    })
+
+    this.dataService.$singleEvent.subscribe(data => {
+      this.singleEvent = data[0];
     })
   }
 
 
-  filterEvents() {
-    console.log(this.events);
+  filterEvents(fromTime: string, toTime: string) {
+   let  fromUnix = Date.parse(this.fromTime) + 61200000;
+    let toUnix = Date.parse(this.toTime) + 61200000;
     this.state = 'filtered';
+    this.eventsCopy = [];
+    this.events.forEach(val => this.eventsCopy.push(Object.assign({}, val)));
+    this.eventsCopy = this.eventsCopy.filter(event => event.eventDate >= fromUnix && event.eventDate <= toUnix);
   }
 
   getDate(time: number) {
       let unix = new Date(time);
 
-      let day = unix.getDay();
-      let month = unix.getMonth();
+      let day = unix.getDate();
+      let month = unix.getMonth() + 1;
       let year = unix.getFullYear();
 
-      return day + '/' + month + '/' + year;
-
+      return month + '/' + day + '/' + year;
   }
 
+  showEvent(id: string) {
+    this.state = 'viewingEvent';
+    this.dataService.pullEvent(id);
+  }
+
+  setBase() {
+    this.state= 'base'
+  }
 
   ngOnInit(): void {
   }

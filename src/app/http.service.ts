@@ -36,4 +36,8 @@ export class HttpService {
   showMyEvents(id: string) {
     return this.HttpClient.get('http://localhost:3000/events?owner=' + id)
   }
+
+  pullEvent(id: string) {
+    return this.HttpClient.get('http://localhost:3000/events?id=' +id)
+  }
 }

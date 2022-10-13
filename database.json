@@ -60,6 +60,22 @@
         "e0e8a787-411b-4c81-9d85-99bfa1d04883",
         "a56a75b7-d362-40ae-a656-289c2f1a272a"
       ]
+    },
+    {
+      "id": "47f6fe72-be43-4de2-854a-bbd5ee9a08ad",
+      "owner": "2",
+      "eventName": "week 2",
+      "eventDate": 1666890000000,
+      "eventDescription": "10/27",
+      "invites": []
+    },
+    {
+      "id": "96487d85-7280-4d5f-b107-16529a80c99f",
+      "owner": "2",
+      "eventName": "week 3",
+      "eventDate": 1666976400000,
+      "eventDescription": "10/28/2022",
+      "invites": []
     }
   ]
 }

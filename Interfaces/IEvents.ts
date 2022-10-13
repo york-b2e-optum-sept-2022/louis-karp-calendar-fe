@@ -2,7 +2,7 @@ export interface IEvents {
   id: string,
   owner: string,
   eventName:string,
-  eventDate: any,
+  eventDate: number,
   eventDescription: string,
   invites: string[]
 }
