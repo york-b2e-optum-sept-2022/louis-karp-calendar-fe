@@ -36,12 +36,15 @@ export class DataService {
   $creating = new Subject<any>();
   $viewEvents = new Subject<any>();
   $viewInvites = new Subject<any>();
+  $goHomepage = new Subject<any>();
 
 
   otherMembers: {} = {};
   $otherMembers = new Subject<any>();
 
    tempProfile: any = null;
+
+   $myEvents = new Subject<any>();
 
 
 
@@ -165,6 +168,21 @@ export class DataService {
     this.httpService.updateUser(user).pipe(first()).subscribe({
       next: (data) => {
 
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
+  goHomepage() {
+    this.$goHomepage.next("show homepage");
+  }
+
+  showMyEvents(id: string) {
+    this.httpService.showMyEvents(id).pipe(first()).subscribe({
+      next: (data) => {
+        this.$myEvents.next(data);
       },
       error: (err) => {
         console.error(err);

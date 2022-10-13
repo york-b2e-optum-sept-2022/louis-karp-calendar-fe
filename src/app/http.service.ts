@@ -32,4 +32,8 @@ export class HttpService {
   updateUser(user: IUsers) {
     return this.HttpClient.put( 'http://localhost:3000/users/' + user.id, user)
   }
+
+  showMyEvents(id: string) {
+    return this.HttpClient.get('http://localhost:3000/events?owner=' + id)
+  }
 }

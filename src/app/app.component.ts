@@ -53,5 +53,11 @@ export class AppComponent {
     }
     )
 
+    this.dataService.$goHomepage.subscribe(data => {
+      this.inviteView = false;
+      this.eventView = false;
+      this.isCreating = false;
+    })
+
   }
 }

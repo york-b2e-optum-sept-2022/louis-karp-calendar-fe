@@ -54,6 +54,7 @@ export class NewEventComponent implements OnInit {
 
     this.dataService.addEventToUsers(this.newEvent.invites, this.newEvent.id);
     this.dataService.addToEventList(this.newEvent);
+    this.dataService.goHomepage();
     }
 
   ngOnInit(): void {
