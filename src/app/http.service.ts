@@ -7,6 +7,7 @@ import {IEvents} from "../../Interfaces/IEvents";
   providedIn: 'root'
 })
 export class HttpService {
+  private x: IEvents[] = [];
 
   constructor(private HttpClient: HttpClient) { }
 
@@ -37,7 +38,15 @@ export class HttpService {
     return this.HttpClient.get('http://localhost:3000/events?owner=' + id)
   }
 
+  showMyInvites() {
+    return this.HttpClient.get('http://localhost:3000/events')
+  }
+
   pullEvent(id: string) {
+    return this.HttpClient.get('http://localhost:3000/events?id=' +id)
+  }
+
+  pullInvite(id: string) {
     return this.HttpClient.get('http://localhost:3000/events?id=' +id)
   }
 

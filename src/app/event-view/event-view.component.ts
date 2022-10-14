@@ -38,7 +38,6 @@ export class EventViewComponent implements OnInit {
 
   valueAsDate: string = '0';
 
-  deleteConfirmation: string = '';
 
 
   constructor(private dataService: DataService) {

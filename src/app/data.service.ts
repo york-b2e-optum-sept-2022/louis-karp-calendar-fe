@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpService} from "./http.service";
-import {first, Subject} from "rxjs";
+import {filter, first, from, Subject} from "rxjs";
 import {IUsers} from "../../Interfaces/IUsers";
 import {IEvents} from "../../Interfaces/IEvents";
 import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
@@ -47,7 +47,13 @@ export class DataService {
    $myEvents = new Subject<any>();
    $singleEvent = new Subject<any>();
 
+   myInvites: any = null;
+   $myInvite = new Subject<any>();
+   $singleInvite = new Subject<any>();
+
   allUsers: any =null;
+
+  tempData: any = null;
 
 
 
@@ -191,6 +197,19 @@ export class DataService {
     })
   }
 
+   showInvites (userId: string) {
+
+    this.httpService.showMyInvites().pipe(first()).subscribe({
+      next: (data) => {
+        this.myInvites = data;
+        this.$myInvite.next(this.myInvites)
+      },
+      error: (err) => {
+        console.error(err)
+      }
+    })
+  }
+
   pullEvent(id: string) {
     this.httpService.pullEvent(id).pipe(first()).subscribe({
       next: (data) => {
@@ -201,6 +220,18 @@ export class DataService {
       }
     })
   }
+
+  pullInvite(id: string) {
+    this.httpService.pullInvite(id).pipe(first()).subscribe({
+      next: (data) => {
+        this.$singleInvite.next(data);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
+
 
   updateInvites(invites: string[], inviteID: string) {
     this.deleteInviteFromAll(inviteID);

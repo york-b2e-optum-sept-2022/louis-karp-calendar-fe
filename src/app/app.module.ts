@@ -27,7 +27,8 @@ import { InviteViewComponent } from './invite-view/invite-view.component';
     BrowserModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
