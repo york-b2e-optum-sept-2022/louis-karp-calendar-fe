@@ -12,6 +12,7 @@ export class DataService {
 
   $register = new Subject<any>();
   $login = new Subject<any>();
+  $logout = new Subject<any>();
 
   $doneRegistering = new Subject<any>();
 
@@ -39,21 +40,20 @@ export class DataService {
   $goHomepage = new Subject<any>();
 
 
-  otherMembers: {} = {};
   $otherMembers = new Subject<any>();
-
-   tempProfile: any = null;
-
    $myEvents = new Subject<any>();
    $singleEvent = new Subject<any>();
 
+  otherMembers: {} = {};
+   tempProfile: any = null;
    myInvites: any = null;
+  allUsers: any =null;
+
+
    $myInvite = new Subject<any>();
    $singleInvite = new Subject<any>();
 
-  allUsers: any =null;
 
-  tempData: any = null;
 
 
 
@@ -279,5 +279,31 @@ export class DataService {
         console.error(err);
       }
     })
+  }
+
+  logout() {
+    this.loggedInUser  = {
+      id: "",
+      username: "",
+      password: "",
+      eventInvites: []
+    };
+
+    this.checkProfile = {
+      id: "",
+      username: "",
+      password: "",
+      eventInvites: []
+    };
+
+    this.user = null;
+
+    this.otherMembers = {};
+    this.tempProfile = null;
+    this.myInvites = null;
+    this.allUsers =null;
+
+
+    this.$logout.next("logged out");
   }
 }

@@ -34,6 +34,10 @@ export class HomePageComponent implements OnInit {
      this.dataService.viewInvites();
   }
 
+  logout() {
+     this.dataService.logout();
+  }
+
   ngOnInit(): void {
   }
 

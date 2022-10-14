@@ -28,6 +28,15 @@ export class AppComponent {
     this.isLoggedIn = true
     );
 
+    this.dataService.$logout.subscribe(() => {
+
+    this.isLoggedIn=false;
+    this.inviteView = false;
+    this.eventView = false;
+    this.isCreating = false;
+    this.isRegistering=false
+    });
+
     this.dataService.$doneRegistering.subscribe(data =>
     this.isRegistering = false
     );
