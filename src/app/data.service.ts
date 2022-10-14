@@ -238,4 +238,15 @@ export class DataService {
     })
   }
 
+  deleteEvent(eventId: string) {
+    this.deleteInviteFromAll(eventId);
+    this.httpService.deleteEvent(eventId).pipe(first()).subscribe({
+      next: (data) => {
+
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
 }

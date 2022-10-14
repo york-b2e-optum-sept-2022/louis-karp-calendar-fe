@@ -51,7 +51,13 @@
   <p>{{singleEvent.eventDescription}}</p>
   <button (click)="setBase()">Return to Events</button>
   <button (click)="editEvent()">Edit Event</button>
-  <button>Delete Event</button>
+  <button (click)="confirmDelete()">Delete Event</button>
+</div>
+
+<div *ngIf="this.state == 'confirmDelete' ">
+  <span>Are you sure you want to delete event: {{singleEvent.eventName}}?</span>
+  <button (click)="deleteEvent(singleEvent.id)">Yes</button>
+  <button (click)="showEvent(singleEvent.id)">No</button>
 </div>
 
 <div *ngIf="this.state == 'editing'">
@@ -76,5 +82,9 @@
   </div>
   <button (click)="setBase()">Return to Events</button>
   <button (click)="submitEventEdit()">Submit</button>
+</div>
+
+<div *ngIf="this.state == 'viewingInvites' ">
+
 </div>
 

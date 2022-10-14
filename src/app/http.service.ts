@@ -48,4 +48,8 @@ export class HttpService {
   updateEvent(event: IEvents) {
     return this.HttpClient.put('http://localhost:3000/events/' + event.id, event)
   }
+
+  deleteEvent(eventId: string) {
+    return this.HttpClient.delete('http://localhost:3000/events/' +eventId)
+  }
 }

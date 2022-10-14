@@ -38,6 +38,8 @@ export class EventViewComponent implements OnInit {
 
   valueAsDate: string = '0';
 
+  deleteConfirmation: string = '';
+
 
   constructor(private dataService: DataService) {
 
@@ -118,6 +120,15 @@ export class EventViewComponent implements OnInit {
     console.log(this.singleEvent)
     this.dataService.updateInvites(this.singleEvent.invites, this.singleEvent.id);
     this.dataService.updateEvent(this.singleEvent)
+    this.dataService.goHomepage();
+  }
+
+  confirmDelete() {
+    this.state = 'confirmDelete'
+  }
+
+  deleteEvent(eventId: string) {
+    this.dataService.deleteEvent(eventId);
     this.dataService.goHomepage();
   }
   ngOnInit(): void {
