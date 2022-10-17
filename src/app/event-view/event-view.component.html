@@ -1,7 +1,33 @@
 <h1>My Events</h1>
 
+
+<div *ngIf="this.state == 'base'" class="center" >
+  <table>
+    <tr>
+      <th><u>Event Name</u></th>
+      <th><u>Date</u></th>
+    </tr>
+    <tr *ngFor="let event of events" (click)="showEvent(event.id)" class="eventHover">
+      <td>{{event.eventName}}</td>
+      <td>{{getDate(event.eventDate)}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="this.state == 'filtered'" class="center">
+  <table>
+    <tr>
+      <th><u>Event Name</u></th>
+      <th><u>Date</u></th>
+    </tr>
+    <tr *ngFor="let event of eventsCopy" (click)="showEvent(event.id)" class="eventHover">
+      <td>{{event.eventName}}</td>
+      <td>{{getDate(event.eventDate)}}</td>
+    </tr>
+  </table>
+</div>
 <div *ngIf="this.state == 'base' || this.state == 'filtered'">
-  <h3>Filter by date</h3>
+  <h3><u>Filter by date</u></h3>
   <div>
     <label>From:</label>
     <input type="date" [(ngModel)]="fromTime">
@@ -13,38 +39,12 @@
   <button class="button-53" role="button" (click)="filterEvents()">Filter</button>
 </div>
 
-<div *ngIf="this.state == 'base'" class="center">
-  <table>
-    <tr>
-      <th>Event Name</th>
-      <th>Date</th>
-    </tr>
-    <tr *ngFor="let event of events" (click)="showEvent(event.id)">
-      <td>{{event.eventName}}</td>
-      <td>{{getDate(event.eventDate)}}</td>
-    </tr>
-  </table>
-</div>
-
-<div *ngIf="this.state == 'filtered'" class="center">
-  <table>
-    <tr>
-      <th>Event Name</th>
-      <th>Date</th>
-    </tr>
-    <tr *ngFor="let event of eventsCopy" (click)="showEvent(event.id)">
-      <td>{{event.eventName}}</td>
-      <td>{{getDate(event.eventDate)}}</td>
-    </tr>
-  </table>
-</div>
-
 <div *ngIf="this.state == 'viewingEvent'" class="center">
-  <table>
+  <table class="centerTable">
     <tr>
-      <th>Event Name: </th>
-      <th>Date: </th>
-      <th>Description: </th>
+      <th><u>Event Name</u></th>
+      <th><u>Date</u></th>
+      <th><u>Description</u></th>
     </tr>
     <tr>
       <td>{{singleEvent.eventName}}</td>

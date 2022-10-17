@@ -26,32 +26,44 @@
       "password": "z",
       "eventInvites": [
         "b5474e45-f32a-4abe-bf90-6e84dbe00afa",
-        "0885291d-7d6e-4f1c-af8a-2753ae300e30",
         "23200dc5-04b4-4c74-9bfd-1d732ad2ffbd",
-        "5f495d1f-5554-4a04-8e99-8ce96c4e59db"
+        "5f495d1f-5554-4a04-8e99-8ce96c4e59db",
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c"
       ]
     },
     {
       "id": "3e4275f3-ac1d-497b-9dea-c2e2715901b8",
       "username": "new",
       "password": "new",
-      "eventInvites": []
+      "eventInvites": [
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c"
+      ]
     },
     {
       "id": "ece7b533-c7be-420b-b9ab-612e50ae04cf",
       "username": "NewUser",
       "password": "NewUser",
-      "eventInvites": []
+      "eventInvites": [
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
+        "379f3d7c-97e5-48ea-8f94-c13a87d8f30c"
+      ]
     }
   ],
   "events": [
     {
       "id": "379f3d7c-97e5-48ea-8f94-c13a87d8f30c",
       "owner": "2",
-      "eventName": "test",
+      "eventName": "Get Together",
       "eventDate": 1664384400000,
-      "eventDescription": "both friends, 9/28",
-      "invites": []
+      "eventDescription": "Everyone is Invited",
+      "invites": [
+        "e0e8a787-411b-4c81-9d85-99bfa1d04883",
+        "a56a75b7-d362-40ae-a656-289c2f1a272a",
+        "3e4275f3-ac1d-497b-9dea-c2e2715901b8",
+        "ece7b533-c7be-420b-b9ab-612e50ae04cf"
+      ]
     },
     {
       "id": "838695a8-e8ea-4b1f-b9e0-09c3b538462c",
@@ -94,9 +106,11 @@
       "id": "0885291d-7d6e-4f1c-af8a-2753ae300e30",
       "owner": "e0e8a787-411b-4c81-9d85-99bfa1d04883",
       "eventName": "Friday",
-      "eventDate": 1666371600000,
+      "eventDate": 946767600000,
       "eventDescription": "It's friday, friday",
-      "invites": []
+      "invites": [
+        "ece7b533-c7be-420b-b9ab-612e50ae04cf"
+      ]
     },
     {
       "id": "23200dc5-04b4-4c74-9bfd-1d732ad2ffbd",

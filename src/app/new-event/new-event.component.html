@@ -1,30 +1,35 @@
-<h2>Create an Event</h2>
+<h2 class="center">Create an Event</h2>
 
 
 <div>
-  <div>
+  <div class="center">
 
-  <label>Event Name</label>
+  <span>Event Name: </span>
   <input type="text" name="eventName" [(ngModel)]="newEvent.eventName">
   </div>
 
-  <label>Send Invites</label>
+  <div class="center">
+  <span>Send Invites: </span>
   <div *ngFor="let member of otherUsers">
     <button (click)="inviteUser(member.id)" id="{{member.id}}">{{member.username}}</button>
+  </div>
   </div>
 
   <div>
 
-  <label>Event Date</label>
+  <span>Event Date: </span>
   <input type="date" value="valueAsDate" name="eventDate" [(ngModel)]="valueAsDate">
   </div>
 
   <div>
 
-    <label>Description of Event</label>
+    <span>Description of Event: </span>
     <textarea name="eventDescription" [(ngModel)]="newEvent.eventDescription"></textarea>
   </div>
 
 </div>
 
-<button (click)="submitEvent()">Submit</button>
+<div class="center">
+
+<button class="button-53" role="button" (click)="submitEvent()">Submit</button>
+</div>

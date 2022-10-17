@@ -25,13 +25,20 @@ div {
   margin: .5rem;
 }
 
+table {
+  border-spacing: 3rem;
+}
+
 
 
 button {
   background-color: var(--alt--color);
 }
 
-
+.eventHover:hover {
+  cursor: pointer;
+  color: var(--alt--color);
+}
 
 .button-53 {
   background-color: var(--alt--color);
@@ -56,10 +63,6 @@ button {
   transform: rotate(-2deg);
   margin: 3rem;
 
-}
-
-.button-53:focus {
-  outline: 0;
 }
 
 .button-53:after {

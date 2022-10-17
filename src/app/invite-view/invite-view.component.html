@@ -1,7 +1,35 @@
 <h1>My Invites</h1>
 
+
+
+<div *ngIf="this.state == 'base'" class="center">
+  <table>
+    <tr>
+      <th><u>Invite Name</u></th>
+      <th><u>Date</u></th>
+    </tr>
+    <tr *ngFor="let invite of invites" (click)="showInvite(invite.id)" class="eventHover">
+      <td>{{invite.eventName}}</td>
+      <td>{{getDate(invite.eventDate)}}</td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="this.state == 'filtered'" class="center">
+  <table>
+    <tr>
+      <th><u>Invite Name</u></th>
+      <th><u>Date</u></th>
+    </tr>
+    <tr *ngFor="let invite of invitesCopy" (click)="showInvite(invite.id)" class="eventHover">
+      <td>{{invite.eventName}}</td>
+      <td>{{getDate(invite.eventDate)}}</td>
+    </tr>
+  </table>
+</div>
+
 <div *ngIf="this.state == 'base' || this.state == 'filtered'" class="spaceBetween">
-  <h3>Filter by date</h3>
+  <h3><u>Filter by date</u></h3>
   <div>
     <label>From:</label>
     <input type="date" [(ngModel)]="fromTime">
@@ -13,39 +41,12 @@
   <button class="button-53" role="button" (click)="filterInvites()">Filter</button>
 </div>
 
-
-<div *ngIf="this.state == 'base'" class="center">
-  <table>
-    <tr>
-      <th>Invite Name</th>
-      <th>Date</th>
-    </tr>
-    <tr *ngFor="let invite of invites" (click)="showInvite(invite.id)">
-      <td>{{invite.eventName}}</td>
-      <td>{{getDate(invite.eventDate)}}</td>
-    </tr>
-  </table>
-</div>
-
-<div *ngIf="this.state == 'filtered'" class="center">
-  <table>
-    <tr>
-      <th>Invite Name</th>
-      <th>Date</th>
-    </tr>
-    <tr *ngFor="let invite of invitesCopy" (click)="showInvite(invite.id)">
-      <td>{{invite.eventName}}</td>
-      <td>{{getDate(invite.eventDate)}}</td>
-    </tr>
-  </table>
-</div>
-
 <div *ngIf="this.state == 'viewingInvite'" class="center">
   <table>
     <tr>
-      <th>Event Name:</th>
-      <th>Date: </th>
-      <th>Description: </th>
+      <th><u>Event Name</u></th>
+      <th><u>Date</u></th>
+      <th><u>Description</u></th>
     </tr>
     <tr>
       <td>{{singleInvite.eventName}}</td>

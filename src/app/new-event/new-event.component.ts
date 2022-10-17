@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {DataService} from "../data.service";
 import {IEvents} from "../../../Interfaces/IEvents";
 import {v4 as uuidv4} from 'uuid';
 import {IUsers} from "../../../Interfaces/IUsers";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-new-event',
@@ -24,11 +25,13 @@ export class NewEventComponent implements OnInit {
 
   valueAsDate: string = '0';
 
+  sub1: Subscription;
+
   constructor(private dataService: DataService) {
     this.newEvent.owner= this.dataService.getUser().id;
     this.dataService.getOtherUsersList();
 
-    this.dataService.$otherMembers.subscribe(data => {
+    this.sub1 = this.dataService.$otherMembers.subscribe(data => {
     this.otherUsers = data;
     });
   }
@@ -59,6 +62,10 @@ export class NewEventComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  ngOnDestroy() {
+    this.sub1.unsubscribe();
   }
 
 }

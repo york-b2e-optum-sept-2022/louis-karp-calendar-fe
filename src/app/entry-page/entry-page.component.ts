@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {DataService} from "../data.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-entry-page',
@@ -13,10 +14,13 @@ export class EntryPageComponent implements OnInit {
   loginError: string = "";
 
 
+  sub1: Subscription;
+
+
   constructor(private dataService: DataService) {
-    this.dataService.$errorLoggingIn.subscribe(data =>
-      this.loginError = data
-    );
+    this.sub1 = this.dataService.$errorLoggingIn.subscribe(data => {
+      this.loginError = data;
+    });
   }
 
   ngOnInit(): void {
@@ -28,5 +32,9 @@ export class EntryPageComponent implements OnInit {
 
   loginUser(username: string, password: string) {
     this.dataService.loginUser(username, password);
+  }
+
+  ngOnDestroy(): void {
+    this.sub1.unsubscribe()
   }
 }

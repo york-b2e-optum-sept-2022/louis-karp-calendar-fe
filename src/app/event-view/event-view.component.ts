@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {DataService} from "../data.service";
 import {IUsers} from "../../../Interfaces/IUsers";
 import {IEvents} from "../../../Interfaces/IEvents";
-import {from} from "rxjs";
+import {from, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-event-view',
@@ -38,6 +38,10 @@ export class EventViewComponent implements OnInit {
 
   valueAsDate: string = '0';
 
+  sub1: Subscription;
+  sub2: Subscription;
+  sub3: Subscription;
+  sub4: Subscription;
 
 
   constructor(private dataService: DataService) {
@@ -45,17 +49,17 @@ export class EventViewComponent implements OnInit {
     this.profile = this.dataService.getUser();
     this.dataService.showMyEvents(this.profile.id);
 
-     this.dataService.$myEvents.subscribe(data => {
+     this.sub1 = this.dataService.$myEvents.subscribe(data => {
       this.events = data;
     })
 
-    this.dataService.$singleEvent.subscribe(data => {
+    this.sub3 = this.sub2 = this.dataService.$singleEvent.subscribe(data => {
       this.singleEvent = data[0];
     })
 
     this.dataService.getOtherUsersList();
 
-    this.dataService.$otherMembers.subscribe(data => {
+    this.sub4 = this.dataService.$otherMembers.subscribe(data => {
       this.otherUsers = data;
     });
   }
@@ -133,4 +137,10 @@ export class EventViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy() {
+  this.sub1.unsubscribe();
+  this.sub2.unsubscribe();
+  this.sub3.unsubscribe();
+  this.sub4.unsubscribe();
+}
 }

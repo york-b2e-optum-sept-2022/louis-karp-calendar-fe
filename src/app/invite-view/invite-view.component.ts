@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {DataService} from "../data.service";
 import {IEvents} from "../../../Interfaces/IEvents";
 import {IUsers} from "../../../Interfaces/IUsers";
-import {Subject} from "rxjs";
+import {Subject, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-invite-view',
@@ -38,17 +38,20 @@ export class InviteViewComponent implements OnInit {
     eventInvites: []
   }
 
+  sub1: Subscription;
+  sub2: Subscription;
+
   constructor(private dataService: DataService) {
     this.profile = this.dataService.getUser();
 
     this.dataService.showInvites(this.profile.id);
 
-    this.dataService.$myInvite.subscribe(data => {
+    this.sub1 = this.dataService.$myInvite.subscribe(data => {
       this.invites = data;
       this.invites = this.invites.filter(x => x.invites.indexOf(this.profile.id) !== -1)
     })
 
-    this.dataService.$singleInvite.subscribe(data => {
+    this.sub2 = this.dataService.$singleInvite.subscribe(data => {
       this.singleInvite = data[0];
     })
 
@@ -86,11 +89,11 @@ export class InviteViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  //
-  //   ngOnDestroy (): void {
-  //   this.onDestroy.next(null);
-  //   this.onDestroy.complete();
-  // }
+
+  ngOnDestroy() {
+    this.sub1.unsubscribe();
+    this.sub2.unsubscribe();
+  }
 
 
 }
