@@ -11,6 +11,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NewEventComponent } from './new-event/new-event.component';
 import { EventViewComponent } from './event-view/event-view.component';
 import { InviteViewComponent } from './invite-view/invite-view.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { InviteViewComponent } from './invite-view/invite-view.component';
     RegistrationComponent,
     NewEventComponent,
     EventViewComponent,
-    InviteViewComponent
+    InviteViewComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

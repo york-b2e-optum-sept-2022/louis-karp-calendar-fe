@@ -37,6 +37,12 @@
       "username": "new",
       "password": "new",
       "eventInvites": []
+    },
+    {
+      "id": "ece7b533-c7be-420b-b9ab-612e50ae04cf",
+      "username": "NewUser",
+      "password": "NewUser",
+      "eventInvites": []
     }
   ],
   "events": [

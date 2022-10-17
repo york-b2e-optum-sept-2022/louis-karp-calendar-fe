@@ -1,5 +1,6 @@
 <h1>Login</h1>
 
+
 <div>
   <span>Username: </span>
   <input [(ngModel)]="username">
@@ -10,9 +11,10 @@
   <input [(ngModel)]="password">
 </div>
 
-<div>
-<button (click)="loginUser(username, password)">Login</button>
-<button (click)="registerUser()">Create User</button>
+
+<div >
+<button class="button-53" role="button" (click)="loginUser(username, password)">Login</button>
+<button class="button-53" role="button" (click)="registerUser()">Create User</button>
 </div>
 
 <div>{{loginError}}</div>
