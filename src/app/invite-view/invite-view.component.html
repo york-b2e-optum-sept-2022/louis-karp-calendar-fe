@@ -1,6 +1,6 @@
 <h1>My Invites</h1>
 
-<div>
+<div *ngIf="this.state == 'base' || this.state == 'filtered'" class="spaceBetween">
   <h3>Filter by date</h3>
   <div>
     <label>From:</label>
@@ -10,45 +10,52 @@
     <label>To:</label>
     <input type="date" [(ngModel)]="toTime">
   </div>
-  <button (click)="filterInvites()">Filter</button>
-  <button (click)="setBase()">Sort Ascending</button>
-  <button>Sort Descending</button>
-  invites page
+  <button class="button-53" role="button" (click)="filterInvites()">Filter</button>
 </div>
 
-<div *ngIf="this.state == 'base'">
+
+<div *ngIf="this.state == 'base'" class="center">
   <table>
     <tr>
       <th>Invite Name</th>
       <th>Date</th>
-      <th>Description</th>
     </tr>
     <tr *ngFor="let invite of invites" (click)="showInvite(invite.id)">
       <td>{{invite.eventName}}</td>
       <td>{{getDate(invite.eventDate)}}</td>
-      <td>{{invite.eventDescription}}</td>
     </tr>
   </table>
 </div>
 
-<div *ngIf="this.state == 'filtered'">
+<div *ngIf="this.state == 'filtered'" class="center">
   <table>
     <tr>
       <th>Invite Name</th>
       <th>Date</th>
-      <th>Description</th>
     </tr>
     <tr *ngFor="let invite of invitesCopy" (click)="showInvite(invite.id)">
       <td>{{invite.eventName}}</td>
       <td>{{getDate(invite.eventDate)}}</td>
-      <td>{{invite.eventDescription}}</td>
     </tr>
   </table>
 </div>
 
-<div *ngIf="this.state == 'viewingInvite'">
-  <h1>{{singleInvite.eventName}}</h1>
-  <h2>{{getDate(singleInvite.eventDate)}}</h2>
-  <p>{{singleInvite.eventDescription}}</p>
-  <button (click)="setBase()">Return to Invites</button>
+<div *ngIf="this.state == 'viewingInvite'" class="center">
+  <table>
+    <tr>
+      <th>Event Name:</th>
+      <th>Date: </th>
+      <th>Description: </th>
+    </tr>
+    <tr>
+      <td>{{singleInvite.eventName}}</td>
+      <td>{{getDate(singleInvite.eventDate)}}</td>
+      <td>{{singleInvite.eventDescription}}</td>
+    </tr>
+
+  </table>
+  </div>
+  <div *ngIf="this.state == 'viewingInvite' ">
+
+  <button class="button-53" role="button" (click)="setBase()">Return to Invites</button>
 </div>

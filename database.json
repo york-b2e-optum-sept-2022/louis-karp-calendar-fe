@@ -27,7 +27,6 @@
       "eventInvites": [
         "b5474e45-f32a-4abe-bf90-6e84dbe00afa",
         "0885291d-7d6e-4f1c-af8a-2753ae300e30",
-        "0885291d-7d6e-4f1c-af8a-2753ae300e30",
         "23200dc5-04b4-4c74-9bfd-1d732ad2ffbd",
         "5f495d1f-5554-4a04-8e99-8ce96c4e59db"
       ]
@@ -95,11 +94,9 @@
       "id": "0885291d-7d6e-4f1c-af8a-2753ae300e30",
       "owner": "e0e8a787-411b-4c81-9d85-99bfa1d04883",
       "eventName": "Friday",
-      "eventDate": 946767600000,
-      "eventDescription": "friday, friday",
-      "invites": [
-        "a56a75b7-d362-40ae-a656-289c2f1a272a"
-      ]
+      "eventDate": 1666371600000,
+      "eventDescription": "It's friday, friday",
+      "invites": []
     },
     {
       "id": "23200dc5-04b4-4c74-9bfd-1d732ad2ffbd",

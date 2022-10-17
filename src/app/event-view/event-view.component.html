@@ -1,6 +1,6 @@
 <h1>My Events</h1>
 
-<div>
+<div *ngIf="this.state == 'base' || this.state == 'filtered'">
   <h3>Filter by date</h3>
   <div>
     <label>From:</label>
@@ -10,54 +10,60 @@
     <label>To:</label>
     <input type="date" [(ngModel)]="toTime">
   </div>
-  <button (click)="filterEvents()">Filter</button>
-  <button>Sort Ascending</button>
-  <button>Sort Descending</button>
+  <button class="button-53" role="button" (click)="filterEvents()">Filter</button>
 </div>
 
-<div *ngIf="this.state == 'base'">
+<div *ngIf="this.state == 'base'" class="center">
   <table>
     <tr>
       <th>Event Name</th>
       <th>Date</th>
-      <th>Description</th>
     </tr>
     <tr *ngFor="let event of events" (click)="showEvent(event.id)">
       <td>{{event.eventName}}</td>
       <td>{{getDate(event.eventDate)}}</td>
-      <td>{{event.eventDescription}}</td>
     </tr>
   </table>
 </div>
 
-<div *ngIf="this.state == 'filtered'">
+<div *ngIf="this.state == 'filtered'" class="center">
   <table>
     <tr>
       <th>Event Name</th>
       <th>Date</th>
-      <th>Description</th>
     </tr>
     <tr *ngFor="let event of eventsCopy" (click)="showEvent(event.id)">
       <td>{{event.eventName}}</td>
       <td>{{getDate(event.eventDate)}}</td>
-      <td>{{event.eventDescription}}</td>
     </tr>
   </table>
 </div>
 
-<div *ngIf="this.state == 'viewingEvent'">
-  <h1>{{singleEvent.eventName}}</h1>
-  <h2>{{getDate(singleEvent.eventDate)}}</h2>
-  <p>{{singleEvent.eventDescription}}</p>
-  <button (click)="setBase()">Return to Events</button>
-  <button (click)="editEvent()">Edit Event</button>
-  <button (click)="confirmDelete()">Delete Event</button>
+<div *ngIf="this.state == 'viewingEvent'" class="center">
+  <table>
+    <tr>
+      <th>Event Name: </th>
+      <th>Date: </th>
+      <th>Description: </th>
+    </tr>
+    <tr>
+      <td>{{singleEvent.eventName}}</td>
+      <td>{{getDate(singleEvent.eventDate)}}</td>
+      <td>{{singleEvent.eventDescription}}</td>
+    </tr>
+  </table>
+
+  </div>
+  <div *ngIf="this.state == 'viewingEvent'">
+  <button class="button-53" role="button" (click)="setBase()">Return to Events</button>
+  <button class="button-53" role="button" (click)="editEvent()">Edit Event</button>
+  <button class="button-53" role="button" (click)="confirmDelete()">Delete Event</button>
 </div>
 
 <div *ngIf="this.state == 'confirmDelete' ">
-  <span>Are you sure you want to delete event: {{singleEvent.eventName}}?</span>
-  <button (click)="deleteEvent(singleEvent.id)">Yes</button>
-  <button (click)="showEvent(singleEvent.id)">No</button>
+  <h1>Are you sure you want to delete event: {{singleEvent.eventName}}?</h1>
+  <button class="button-53" role="button" (click)="deleteEvent(singleEvent.id)">Yes</button>
+  <button class="button-53" role="button" (click)="showEvent(singleEvent.id)">No</button>
 </div>
 
 <div *ngIf="this.state == 'editing'">
@@ -76,11 +82,11 @@
   <div>
     <label>Send Invites</label>
     <div *ngFor="let member of otherUsers">
-      <button *ngIf="findUser(member.id) !== -1" class='invited' (click)="editInvite(member.id)" id="{{member.id}}">{{member.username}}</button>
-      <button *ngIf="findUser(member.id) == -1" class='uninvited' (click)="editInvite(member.id)" id="{{member.id}}">{{member.username}}</button>
+      <button class="invited" role="button" *ngIf="findUser(member.id) !== -1"  (click)="editInvite(member.id)" id="{{member.id}}">{{member.username}}</button>
+      <button class="uninvited" role="button" *ngIf="findUser(member.id) == -1"  (click)="editInvite(member.id)" id="{{member.id}}">{{member.username}}</button>
     </div>
   </div>
-  <button (click)="setBase()">Return to Events</button>
-  <button (click)="submitEventEdit()">Submit</button>
+  <button class="button-53" role="button" (click)="setBase()">Return to Events</button>
+  <button class="button-53" role="button" (click)="submitEventEdit()">Submit</button>
 </div>
 
